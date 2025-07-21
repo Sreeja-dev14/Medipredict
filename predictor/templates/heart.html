@@ -1,0 +1,46 @@
+{%extends 'base.html'%} 
+
+{%block content%}
+
+<div class="container">
+    <div class="display-4 my-2 text-center">Heart Disease Prediction</div>
+    <hr />
+    {% if context %}
+    <div class="h1 my-2 text-center">
+        You {{ context }} heart disease.
+    </div>
+    {% endif %}
+	{% if best_model %}
+  <h4>Best Model Used: <span style="color: green">{{ best_model }}</span></h4>
+{% endif %}
+	{% if medicines %}
+  <h4>Suggested Medicines:</h4>
+  <ul>
+    {% for med in medicines %}
+      <li>{{ med }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+    {% if chart %}
+  <h4>Model Performance Chart</h4>
+  <img src="{{ chart }}" alt="Performance Chart" style="max-width: 100%; height: auto;" />
+{% endif %}
+
+    <!-- 
+      19:46:19 09 Oct, 2019 by Arjun Adhikari
+      Form Here 
+      -->
+    <div class="col-md-4">
+        <form class="" method="POST" action="{% url 'heart' %}">
+            {% csrf_token %}
+            {{form}}
+            <div class="mt-4">
+                <button type="submit" class="btn-lg btn-block btn btn-outline-danger mb-5">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
