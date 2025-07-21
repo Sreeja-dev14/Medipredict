@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow p-4">
+    <h2 class="text-center text-primary mb-4">{{ title }}</h2>
+
+    <div class="text-center mb-4">
+      <h4 class="text-success">Prediction Result:</h4>
+      <p class="h5">You <strong>{{ result }}</strong> {{ disease_name }}.</p>
+    </div>
+
+    {% if best_model %}
+    <div class="text-center mb-4">
+      <h5>Best Performing Model: <span class="text-info">{{ best_model }}</span></h5>
+    </div>
+    {% endif %}
+
+    {% if chart %}
+    <div class="mb-4 text-center">
+      <img src="{{ chart }}" alt="Model Performance Chart" class="img-fluid rounded shadow">
+    </div>
+    {% endif %}
+    {% if chart1 %}
+    <div class="mb-4 text-center">
+      <img src="{{ chart1 }}" alt="Stroke Risk Prediction" class="img-fluid rounded shadow">
+    </div>
+    {% endif %}
+
+
+
+    <div class="text-center mb-4">
+      <h5>Recommended Medicines:</h5>
+      <ul class="list-group list-group-flush">
+        {% for med in medicines %}
+        <li class="list-group-item">{{ med }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

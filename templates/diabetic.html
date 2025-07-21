@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+
+<div class="display-4 my-2 text-center">Diabetes Disease Prediction</div>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label>Age</label>
+                <input type="number" name="age" step="0.1" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Gender (0 = Female, 1 = Male)</label>
+                <input type="number" name="gender" step="1" min="0" max="1" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>BMI (Body Mass Index)</label>
+                <input type="number" name="bmi" step="0.1" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Blood Glucose Level (mg/dL)</label>
+                <input type="number" name="blood_glucose" step="0.1" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>HbA1c (%)</label>
+                <input type="number" name="hba1c" step="0.1" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Systolic Blood Pressure (mm Hg)</label>
+                <input type="number" name="systolic_bp" step="1" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Diastolic Blood Pressure (mm Hg)</label>
+                <input type="number" name="diastolic_bp" step="1" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Cholesterol (mg/dL)</label>
+                <input type="number" name="cholesterol" step="1" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Family History (0 = No, 1 = Yes)</label>
+                <input type="number" name="family_history" min="0" max="1" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Physical Activity (0 = Low, 1 = Moderate, 2 = High)</label>
+                <input type="number" name="physical_activity" min="0" max="2" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success px-5">Predict Diabetes</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
